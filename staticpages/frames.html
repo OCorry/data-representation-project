@@ -1,0 +1,219 @@
+<!--HTML file that carrys out CRUD operations on a table of data-->
+<!--code sourced from Topic 6 Lectures and labs-->
+
+<html>
+    <head>
+        <title>View Frames</title>
+    </head>
+    <body>
+        <h1>Frames</h1>
+        <div><button id = "button-showCreate" onclick="showCreate()">Create a Frame</button></div>
+        <div>
+            <table border ="1" id="frameTable">
+                <tr>
+                    <th>id</th>
+                    <th>Occasion</th>
+                    <th>Colour</th>
+                    <th>Height</th>
+                    <th>Width</th>
+                    <th>Price</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                </tr>
+
+                <tr id ="1">
+                    <td>1</td>
+                    <td>Baby Girl</td>
+                    <td>Pink</td>
+                    <td>12</td>
+                    <td>10</td>
+                    <td>12</td>
+                    <td><button onclick="showUpdate(this)">Update</button></td>
+                    <td><button onclick="doDelete(this)">Delete</button></td>
+                </tr>
+            </table>
+
+
+        </div>
+
+        <div id='createUpdateForm' style="display: none">
+            <h2><span id="createLabel">Create a</span> 
+            <span id="updateLabel" style="display:none">Update this</span> Frame
+            </h2>
+
+            Id <input type="text" name="id"><br/>
+            Occasion <input type="text" name="Occasion"><br/>
+            Colour <input type="text" name="Colour"><br/>
+            Height <input type="text" name="Height"><br/>
+            Width <input type="text" name="Width"><br/>
+            Price <input type="number" name="Price"><br/>
+
+            <span><button id= "button-doCreate" onclick="doCreate()">Create</button></span>
+            <span><button id ="button-doUpdate" onclick="doUpdate()">Update</button></span>
+            
+
+        </div>
+
+    </body>
+    <script>
+        function showCreate(){
+            document.getElementById('createUpdateForm').style.display="block"
+            document.getElementById('button-doCreate').style.display="block"
+            document.getElementById('button-doUpdate').style.display="none"
+            document.getElementById('createLabel').style.display="inline"
+            document.getElementById('updateLabel').style.display="none"
+
+            document.getElementById('button-showCreate').style.display="none"
+            document.getElementById('frameTable').style.display="none"
+
+
+        }
+    
+        function showUpdate(buttonElement){
+            document.getElementById("createUpdateForm").style.display = "block"        
+            document.getElementById("button-doCreate").style.display = "none"
+
+            document.getElementById("button-doUpdate").style.display = "block"
+            document.getElementById("createLabel").style.display = "none"
+            document.getElementById("updateLabel").style.display = "inline"
+    
+            document.getElementById("button-showCreate").style.display = "none"
+            document.getElementById("frameTable").style.display = "none"
+
+
+            rowElement = buttonElement.parentNode.parentNode
+            frame = getFrameFromRow(rowElement)
+            populateFormWithFrame(frame)
+
+        }
+
+        // Function to show create button and table and hide the update button 
+        function showViewAll(){
+            document.getElementById('createUpdateForm').style.display="none"
+            document.getElementById('button-showCreate').style.display="block"
+            document.getElementById('frameTable').style.display="block"
+        }
+
+        // function to clear the inputted data from the form when a new frame is created 
+        function clearForm(){
+            var form = document.getElementById('createUpdateForm')
+            form.querySelector('input[name="id"]').disabled = false
+            form.querySelector('input[name="id"]').value =''
+            form.querySelector('input[name="Occasion"]').value=''
+            form.querySelector('input[name="Colour"]').value=''
+            form.querySelector('input[name="Height"]').value=''
+            form.querySelector('input[name="Width"]').value=''
+            form.querySelector('input[name="Price"]').value=''
+        }
+
+
+        // Read in the new frame details 
+        function getFrameFromForm(){
+            var form = document.getElementById('createUpdateForm')
+            var frame = {}
+            frame.id = form.querySelector('input[name="id"]').value
+            frame.Occasion = form.querySelector('input[name="Occasion"]').value
+            frame.Colour = form.querySelector('input[name="Colour"]').value
+            frame.Height = form.querySelector('input[name="Height"]').value
+            frame.Width = form.querySelector('input[name="Width"]').value
+            frame.Price = form.querySelector('input[name="Price"]').value
+            //console.log(JSON.stringify(frame))
+        return frame
+        }
+        
+        //Populate the form with the details of the new frame 
+        function populateFormWithFrame(frame){
+            var form = document.getElementById('createUpdateForm')
+            form.querySelector('input[name="id"]').disabled = true
+            form.querySelector('input[name="id"]').value = frame.id
+            form.querySelector('input[name="Occasion"]').value= frame.Occasion
+            form.querySelector('input[name="Colour"]').value= frame.Colour
+            form.querySelector('input[name="Height"]').value= frame.Height
+            form.querySelector('input[name="Width"]').value= frame.Width
+            form.querySelector('input[name="Price"]').value= frame.Price
+        }
+
+
+                //adding new cadnle data to the table 
+        function addFrameToTable(frame){
+            var tableElement = document.getElementById('frameTable')
+            var rowElement = tableElement.insertRow(-1)
+            
+            rowElement.setAttribute('id',frame.id)
+
+
+            var cell1 = rowElement.insertCell(0);
+            cell1.innerHTML = frame.id
+            var cell2 = rowElement.insertCell(1);
+            cell2.innerHTML = frame.Occasion
+            var cell3 = rowElement.insertCell(2);
+            cell3.innerHTML = frame.Colour
+            var cell4 = rowElement.insertCell(3);
+            cell4.innerHTML = frame.Height
+            var cell5 = rowElement.insertCell(4);
+            cell5.innerHTML = frame.Width
+            var cell6 = rowElement.insertCell(5);
+            cell6.innerHTML = frame.Price
+            var cell7 = rowElement.insertCell(6);
+            cell7.innerHTML = '<button onclick="showUpdate(this)">Update</button>'
+            var cell8 = rowElement.insertCell(7);
+            cell8.innerHTML = '<button onclick=doDelete(this)>Delete</button>'
+            }
+
+            
+        // Read in the cadnle data from the current row 
+        function getFrameFromRow(rowElement){
+            var frame ={}
+            frame.id = rowElement.cells[0].firstChild.textContent
+            frame.Occasion = rowElement.cells[1].firstChild.textContent
+            frame.Colour= rowElement.cells[2].firstChild.textContent
+            frame.Height = rowElement.cells[3].firstChild.textContent
+            frame.Width = rowElement.cells[4].firstChild.textContent
+            frame.Price = rowElement.cells[5].firstChild.textContent
+            return frame
+            }
+
+
+        function setFrameInRow(rowElement, frame){
+            rowElement.cells[0].firstChild.textContent= frame.id
+            rowElement.cells[1].firstChild.textContent= frame.Occasion
+            rowElement.cells[2].firstChild.textContent= frame.Colour
+            rowElement.cells[3].firstChild.textContent= frame.Height
+            rowElement.cells[4].firstChild.textContent= frame.Width
+            rowElement.cells[5].firstChild.textContent= frame.Price
+
+            }
+
+        function doCreate(){
+            //Testing this works by printing to console 
+            //console.log(frame)
+            frame = getFrameFromForm()
+            //Testing it works 
+            console.log("Creating a frame")
+            addFrameToTable(frame)
+            showViewAll()
+            clearForm()
+            
+        }
+
+
+        function doUpdate(){
+            frame = getFrameFromForm();
+            var rowElement = document.getElementById(frame.id)
+            setFrameInRow(rowElement,frame)
+
+            showViewAll()
+            clearForm()
+            
+        }
+
+        // Delete frame from table
+        function doDelete(buttonElement){
+            var tableElement = document.getElementById('frameTable')
+            var index = buttonElement.parentNode.parentNode.rowIndex;
+            tableElement.deleteRow(index);
+            }
+
+    
+    </script>
+</html>
