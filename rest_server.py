@@ -9,7 +9,7 @@ from candlesDAO import candlesDAO
 from framesDAO import framesDAO
 
 from flask import Flask, url_for, request, redirect, abort, jsonify
-app = Flask(__name__, static_url_path='', static_folder='.')
+app = Flask(__name__, static_url_path='', static_folder='staticpages')
 
 
 #Implement the requests:
