@@ -1,9 +1,10 @@
 <html>
     <head>
         <title>View Candles</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="candlesAjax.js"></script>
     </head>
     <!--JQuery code-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <body>
         <h1>Candles</h1>
@@ -224,114 +225,9 @@
             tableElement.deleteRow(index);
             }
 
-        function getAllAjax(){
-            $.ajax({
-                "url": "/candles",
-                
-                "method":"GET",
-                "data":"",
-                "dataType": "JSON",
-                "success":function(result){
-                    console.log(result);
-                    for (candle of result){
-                        addCandleToTable(candle);
-                    }
-                    
-                },
-                "error":function(xhr,status,error){
-                    console.log("error: "+status+" msg:"+error);
-                }
-            });
 
-    }
+            
 
-    function processGetAll(result){
-        console.log("in process")
-        console.log(result)
-    }
-    getAllAjax(processGetAll)
-
-
-
-    function createCandleAjax(candle){
-        
-        console.log(JSON.stringify(candle));
-        $.ajax({
-            "url": "/candles",
-            "method":"POST",
-            "data":JSON.stringify(candle),
-            "dataType": "JSON",
-            contentType: "application/json; charset=utf-8",
-            "success":function(result){
-                //console.log(result);
-                candle.id = result.id
-                addCandleToTable(candle)
-                clearForm()
-                showViewAll()
-            },
-            "error":function(xhr,status,error){
-                console.log("error: "+status+" msg:"+error);
-            }
-        });
-    }
-    function processCreateresponse(result){
-        console.log(result)
-}
-        candle = {"Name":"HoneyLemon", "Colour": "Light Yellow", "Height": 10, "Width": 10, "Scent": "Honey & Lemon", "Price": 15}  
-        createCandleAjax(candle,processCreateresponse)
-
-
-
-    function updateCandleAjax(candle){
-
-        console.log(JSON.stringify(candle));
-        $.ajax({
-            "url": "/candles/"+encodeURI(candle.id),
-            "method":"PUT",
-            "data":JSON.stringify(candle),
-            "dataType": "JSON",
-            contentType: "application/json; charset=utf-8",
-            "success":function(result){
-               // console.log(result);
-                  
-            },
-            "error":function(xhr,status,error){
-                console.log("error: "+status+" msg:"+error);
-            }
-        });
-    }
-
-    function processUpdateResponse(result){
-        console.log(result)
-    }
-    candle = {id:44,"Price":999} 
-    updateCandleAjax(candle,processUpdateResponse) 
-
-
-    function deleteCandleAjax(id){
-        
-        //console.log(JSON.stringify('deleting '+id));
-        $.ajax({
-            "url": "candles/"+encodeURI(id),
-            "method":"DELETE",
-            "data":"",
-            "dataType": "JSON",
-            contentType: "application/json; charset=utf-8",
-            "success":function(result){
-                //console.log(result);
-                  
-            },
-            "error":function(xhr,status,error){
-                console.log("error: "+status+" msg:"+error);
-            }
-        });
-    }
-
-
-    function processDeleteResponse(result){
-        console.log("in process delete")
-        console.log(result)
-        }
-        deleteCandleAjax(18,processDeleteResponse)
+    
     </script>
 </html>
