@@ -9,12 +9,66 @@
         <!--Linking to the candlesAjax.js file-->
         <script src="framesAjax.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <!--https://getbootstrap.com/-->
+    
+    <style>
+        body {
+            background-color: rgb(238, 142, 201);
+        }
+        /*https://www.w3schools.com/css/css_background.asp*/
+
+        td, th {text-align:center; color:cornflowerblue;}
+        /* https://www.w3schools.com/css/css_align.asp */
+
+        table {border: 3px dashed cornflowerblue; background-color: lightgray;}
+        /*https://www.w3schools.com/css/css_table_align.asp */
+        
+        .center {
+            text-align: center;
+            border: 3px solid cornflowerblue;
+        } 
+        /*https://www.w3schools.com/css/css_align.asp */   
+
+
+        h1, h2 {
+            text-align: center;
+            color: cornflowerblue;
+        }
+        /* https://www.w3schools.com/css/css_text.asp */
+
+        .centerButton {
+            margin: 0;
+            position: absolute;
+            left: 46%;
+
+        }
+
+
+        .centerButtonCreate {
+            margin: 0;
+            position: absolute;
+            left: 50%;
+
+        }
+
+        .centerButtonUpdate {
+            margin: 0;
+            position: absolute;
+            left: 50%;
+
+        }
+        
+        /* https://www.w3schools.com/howto/howto_css_center_button.asp */
+
+
+    </style>
+    
     </head>
     <body>
         <h1>Frames</h1>
-        <div> <button id="showCreateButton" onclick="showCreate()">Create</button></div>
-        <div>
-            <table class="table" border ="3" id="frameTable">
+        <div class="centerButton"> <button id="showCreateButton" onclick="showCreate()">Create A New Frame</button></div>
+        <div></br></br>
+            <table class="table" id="frameTable">
                 <tr>
                         <th>id</th>
                         <th>Occasion</th>
@@ -28,17 +82,18 @@
                 
             </table>
         </div>
-        <div id='createUpdateForm' style="display: none">
-                <h2><span id="createLabel">Create a</span> <span id="updateLabel">update</span>Frame</h2>
+        <div class="center" id='createUpdateForm' style="display: none">
+                <h2><span id="createLabel">Create a</span> <span id="updateLabel">Update</span> a Frame</h2>
                 <input type="hidden" name="id"/>
                 Occasion <input type="text" name="Occasion" /><br/>
                 Colour <input type="text" name="Colour"/> <br/>
-                Height <input type="text" name="Height"/> <br/>
-                Width <input type="text" name="Width"/> <br/>
+                Height <input type="number" name="Height"/> <br/>
+                Width <input type="number" name="Width"/> <br/>
                 Price <input type="number" name="Price"/> <br/>
-                <span><button id="doCreateButton" onclick="doCreate()">Create</button></span>
-                <span><button id="doUpdateButton" onclick="doUpdate()">Update</button></span>
-        </div>
+                </br>
+                <span><button class = "centerButtonCreate" id="doCreateButton" onclick="doCreate()">Create!</button></span>
+                <span><button class ="centerButtonUpdate" id="doUpdateButton"  onclick="doUpdate()">Update!</button></span>
+            </div>   
     </body>
     <script>
     // Showing and hiding buttons/tables and forms
@@ -133,7 +188,7 @@
         var cell7 = rowElement.insertCell(6);
         cell7.innerHTML = '<button onclick="showUpdate(this)">Update</button>'
         var cell8 = rowElement.insertCell(7);
-        cell8.innerHTML = '<button onclick=doDelete(this)>delete</button>'
+        cell8.innerHTML = '<button onclick=doDelete(this)>Delete</button>'
     }
 
     // Function to clear the inputted data from the form when creating a new candle
