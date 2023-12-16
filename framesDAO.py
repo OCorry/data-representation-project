@@ -1,9 +1,9 @@
 # Creating all of the functions that will be used in the rest_server.py module 
 # Code sourced from Topic 10
 
-#importing the database details from config file 
+#importing the database login details from config file 
 from config import config2 as cfg2
-
+# To allow to communicate with the sql database
 import mysql.connector
 
 # Create the framesDAO class 
@@ -12,10 +12,11 @@ class framesDAO:
     user = ""
     password =""
     database =""
-
     connection = ""
     cursor =""
 
+
+    # login details are stored in the config.py file
     def __init__(self): 
         self.host=cfg2["hostname"]
         self.user=cfg2["username"]
@@ -38,7 +39,9 @@ class framesDAO:
     def closeAll(self):
         self.connection.close()
         self.cursor.close()
-    
+
+
+    # Functions using SQL commands:
     # Function to create a new frame
     def createNewFrame(self, values):
         cursor = self.getCursor()
@@ -49,6 +52,7 @@ class framesDAO:
         newid = cursor.lastrowid
         self.closeAll()
         return newid
+    
 
     # Function to retrive all from the database table
     def getAllFrames(self):
@@ -64,6 +68,7 @@ class framesDAO:
         
         self.closeAll()
         return returnArray
+    
 
     # Function to retrieve a particular row of data by id from the database table
     def findFrameByID(self, id):
@@ -76,6 +81,7 @@ class framesDAO:
         returnvalue = self.convertToDictionary(result)
         self.closeAll()
         return returnvalue
+    
 
     # Function to update an existing entry in the database table
     def updateFrame(self, values):
@@ -84,6 +90,7 @@ class framesDAO:
         cursor.execute(sql, values)
         self.connection.commit()
         self.closeAll()
+
 
     # Function to delete an entry from the database table
     def deleteFrame(self, id):
@@ -97,6 +104,7 @@ class framesDAO:
         self.closeAll
         print("delete done")
 
+
     # Function to covert results to dict to print in the Virtual Environment terminal 
     def convertToDictionary(self, result):
         colnames=['id','Occasion','Colour', "Height", 'Width', 'Price']
@@ -108,6 +116,7 @@ class framesDAO:
                 item[colName] = value
         
         return item
+    
 
-# Store the framesDAO class inside framesDAO variable so it can be imported into rese_server.py
+# Store the framesDAO class inside framesDAO variable so it can be imported into rest_server.py
 framesDAO = framesDAO()

@@ -4,13 +4,14 @@
 # Code Adapted from Topic 8 lectures and labs 
 
 
-# Import candlesDAO from the candlesDAO file 
+# Import the DAOs from the DAO files
 from candlesDAO import candlesDAO
 from framesDAO import framesDAO
 
 from flask import Flask, url_for, request, redirect, abort, jsonify
 app = Flask(__name__, static_url_path='', static_folder='staticpages')
 
+#app = Flask(__name__)
 
 #Implement the requests:
 
@@ -42,7 +43,7 @@ def create():
 
     if not request.json:
         abort(400)
-    newCandle ={
+    candle = {
         "Name": request.json["Name"],
         "Colour":request.json["Colour"],
         "Height": request.json["Height"],
@@ -51,10 +52,10 @@ def create():
         "Price": request.json["Price"],
 
     }
-    values =(newCandle['Name'],newCandle['Colour'],newCandle['Height'],newCandle['Width'],newCandle['Scent'],newCandle['Price'])
+    values =(candle['Name'],candle['Colour'],candle['Height'],candle['Width'],candle['Scent'],candle['Price'])
     newId = candlesDAO.create(values)
-    newCandle['id'] = newId
-    return jsonify(newCandle)
+    candle['id'] = newId
+    return jsonify(candle)
     
 
 

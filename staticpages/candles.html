@@ -1,233 +1,215 @@
+<!--HTML file that allows for carrying out CRUD operations on a table of data-->
+<!--Code sourced from Topic 6 Lectures and labs-->
+
 <html>
     <head>
-        <title>View Candles</title>
+        <title> View Candles</title>
+        <!--jquery code for Ajax-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        
+        <!--Linking to the candlesAjax.js file-->
         <script src="candlesAjax.js"></script>
-    </head>
-    <!--JQuery code-->
 
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
     <body>
         <h1>Candles</h1>
-        <div><button id = "button-showCreate" onclick="showCreate()">Create a Candle</button></div>
+        <div> <button id="showCreateButton" onclick="showCreate()">Create A New Candle</button></div>
         <div>
-            <table border ="1" id="candleTable">
+            <table class="table" border ="3" id="candleTable">
                 <tr>
-                    <th>id</th>
-                    <th>Name</th>
-                    <th>Colour</th>
-                    <th>Height</th>
-                    <th>Width</th>
-                    <th>Scent</th>
-                    <th>Price</th>
-                    <th>Update</th>
-                    <th>Delete</th>
+                        <th>id</th>
+                        <th>Name</th>
+                        <th>Colour</th>
+                        <th>Height</th>
+                        <th>Width</th>
+                        <th>Scent</th>
+                        <th>Price</th>
+                        <th>Update</th>
+                        <th>Delete</th>
                 </tr>
-
-                <tr id ="1">
-                    <td>1</td>
-                    <td>Berry Burst</td>
-                    <td>Red</td>
-                    <td>12</td>
-                    <td>10</td>
-                    <td>Strawberry and Raspberry</td>
-                    <td>12</td>
-                    <td><button onclick="showUpdate(this)">Update</button></td>
-                    <td><button onclick="doDelete(this)">Delete</button></td>
-                </tr>
+                
             </table>
-
-
         </div>
-
         <div id='createUpdateForm' style="display: none">
-            <h2><span id="createLabel">Create a</span> 
-            <span id="updateLabel" style="display:none">Update this</span> Candle
-            </h2>
-
-            Id <input type="text" name="id"><br/>
-            Name <input type="text" name="Name"><br/>
-            Colour <input type="text" name="Colour"><br/>
-            Height <input type="text" name="Height"><br/>
-            Width <input type="text" name="Width"><br/>
-            Scent <input type="text" name="Scent"><br/>
-            Price <input type="number" name="Price"><br/>
-
-            <span><button id= "button-doCreate" onclick="doCreate()">Create</button></span>
-            <span><button id ="button-doUpdate" onclick="doUpdate()">Update</button></span>
-            
-
+                <h2><span id="createLabel">Create a</span> <span id="updateLabel">Update</span> Candle</h2>
+                <input type="hidden" name="id"/>
+                Name <input type="text" name="Name" /><br/>
+                Colour <input type="text" name="Colour"/> <br/>
+                Height <input type="text" name="Height"/> <br/>
+                Width <input type="text" name="Width"/> <br/>
+                Scent <input type="text" name="Scent"/> <br/>
+                Price <input type="number" name="Price"/> <br/>
+                <span><button id="doCreateButton" onclick="doCreate()">Create</button></span>
+                <span><button id="doUpdateButton" onclick="doUpdate()">Update</button></span>
         </div>
-
     </body>
     <script>
-        function showCreate(){
-            document.getElementById('createUpdateForm').style.display="block"
-            document.getElementById('button-doCreate').style.display="block"
-            document.getElementById('button-doUpdate').style.display="none"
-            document.getElementById('createLabel').style.display="inline"
-            document.getElementById('updateLabel').style.display="none"
+    // Showing and hiding buttons/tables and forms
+    function showCreate(){
+        document.getElementById('showCreateButton').style.display="none"
+        document.getElementById('candleTable').style.display="none"
+        document.getElementById('createUpdateForm').style.display="block"
 
-            document.getElementById('button-showCreate').style.display="none"
-            document.getElementById('candleTable').style.display="none"
+        document.getElementById('createLabel').style.display="inline"
+        document.getElementById('updateLabel').style.display="none"
+
+        document.getElementById('doCreateButton').style.display="block"
+        document.getElementById('doUpdateButton').style.display="none"
+    }
+
+    // Function to show the create button and table & hides the update form    
+    function showViewAll(){
+        document.getElementById('showCreateButton').style.display="block"
+        document.getElementById('candleTable').style.display="block"
+        document.getElementById('createUpdateForm').style.display="none"
+    }
+
+    // Shows the update form and hides everything else
+    function showUpdate(buttonElement){
+        document.getElementById('showCreateButton').style.display="none"
+        document.getElementById('candleTable').style.display="none"
+        document.getElementById('createUpdateForm').style.display="block"
+
+        document.getElementById('createLabel').style.display="none"
+        document.getElementById('updateLabel').style.display="inline"
+
+        document.getElementById('doCreateButton').style.display="none"
+        document.getElementById('doUpdateButton').style.display="block"
 
 
-        }
+        var rowElement = buttonElement.parentNode.parentNode
     
-        function showUpdate(buttonElement){
-            document.getElementById("createUpdateForm").style.display = "block"        
-            document.getElementById("button-doCreate").style.display = "none"
-
-            document.getElementById("button-doUpdate").style.display = "block"
-            document.getElementById("createLabel").style.display = "none"
-            document.getElementById("updateLabel").style.display = "inline"
-    
-            document.getElementById("button-showCreate").style.display = "none"
-            document.getElementById("candleTable").style.display = "none"
-
-
-            rowElement = buttonElement.parentNode.parentNode
-            candle = getCandleFromRow(rowElement)
-            populateFormWithCandle(candle)
-
-        }
-
-        // Function to show create button and table and hide the update button 
-        function showViewAll(){
-            document.getElementById('createUpdateForm').style.display="none"
-            document.getElementById('button-showCreate').style.display="block"
-            document.getElementById('candleTable').style.display="block"
-        }
-
-        // function to clear the inputted data from the form when a new candle is created 
-        function clearForm(){
-            var form = document.getElementById('createUpdateForm')
-            form.querySelector('input[name="id"]').disabled = false
-            form.querySelector('input[name="id"]').value =''
-            form.querySelector('input[name="Name"]').value=''
-            form.querySelector('input[name="Colour"]').value=''
-            form.querySelector('input[name="Height"]').value=''
-            form.querySelector('input[name="Width"]').value=''
-            form.querySelector('input[name="Scent"]').value=''
-            form.querySelector('input[name="Price"]').value=''
-        }
-
-
-        // Read in the new candle details 
-        function getCandleFromForm(){
-            var form = document.getElementById('createUpdateForm')
-            var candle = {}
-            candle.id = form.querySelector('input[name="id"]').value
-            candle.Name = form.querySelector('input[name="Name"]').value
-            candle.Colour = form.querySelector('input[name="Colour"]').value
-            candle.Height = form.querySelector('input[name="Height"]').value
-            candle.Width = form.querySelector('input[name="Width"]').value
-            candle.Scent = form.querySelector('input[name="Scent"]').value
-            candle.Price = form.querySelector('input[name="Price"]').value
-            //console.log(JSON.stringify(candle))
-        return candle
-        }
         
-        //Populate the form with the details of the new candle 
-        function populateFormWithCandle(candle){
-            var form = document.getElementById('createUpdateForm')
-            form.querySelector('input[name="id"]').disabled = true
-            form.querySelector('input[name="id"]').value = candle.id
-            form.querySelector('input[name="Name"]').value= candle.Name
-            form.querySelector('input[name="Colour"]').value= candle.Colour
-            form.querySelector('input[name="Height"]').value= candle.Height
-            form.querySelector('input[name="Width"]').value= candle.Width
-            form.querySelector('input[name="Scent"]').value= candle.Scent
-            form.querySelector('input[name="Price"]').value= candle.Price
-        }
+        var candle = getCandleFromRow(rowElement)
+        populateFormWithCandle(candle)
+    }
 
+    // Function to create a new candle 
+    function doCreate(){
+        var form = document.getElementById('createUpdateForm')
+        var candle = {}
+        candle.Name = form.querySelector('input[name="Name"]').value
+        candle.Colour = form.querySelector('input[name="Colour"]').value
+        candle.Height = form.querySelector('input[name="Height"]').value
+        candle.Width = form.querySelector('input[name="Width"]').value
+        candle.Scent = form.querySelector('input[name="Scent"]').value
+        candle.Price = form.querySelector('input[name="Price"]').value
+        console.log(JSON.stringify(candle))
+        createCandleAjax(candle)   
+        
+    }
 
-                //adding new candlee data to the table 
-        function addCandleToTable(candle){
-            var tableElement = document.getElementById('candleTable')
-            var rowElement = tableElement.insertRow(-1)
-            
-            rowElement.setAttribute('id',candle.id)
+    // Calling functions
+    function doUpdate(){
+        var candle = getCandleFromForm();
+        var rowElement = document.getElementById(candle.id);
+        updateCandleAjax(candle);
+        setCandleInRow(rowElement,candle);
+       
+        clearForm();
+        showViewAll();
+    }
 
+    //Deleting a candle from the table 
+    function doDelete(r){
+        var tableElement = document.getElementById('candleTable');
+        var rowElement = r.parentNode.parentNode;
+        var index = rowElement.rowIndex;
+        deleteCandleAjax(rowElement.getAttribute("id"));
+        tableElement.deleteRow(index);
+    }
+ 
+    // Adding new candle details to the table
+    function addCandleToTable(candle){
+        var tableElement = document.getElementById('candleTable')
+        var rowElement = tableElement.insertRow(-1)
+        rowElement.setAttribute('id',candle.id)
+        var cell1 = rowElement.insertCell(0);
+        cell1.innerHTML = candle.id
+        var cell2 = rowElement.insertCell(1);
+        cell2.innerHTML = candle.Name
+        var cell3 = rowElement.insertCell(2);
+        cell3.innerHTML = candle.Colour
+        var cell4 = rowElement.insertCell(3);
+        cell4.innerHTML = candle.Height
+        var cell5 = rowElement.insertCell(4);
+        cell5.innerHTML = candle.Width
+        var cell6 = rowElement.insertCell(5);
+        cell6.innerHTML = candle.Scent
+        var cell7 = rowElement.insertCell(6);
+        cell7.innerHTML = candle.Price
+        var cell8 = rowElement.insertCell(7);
+        cell8.innerHTML = '<button onclick="showUpdate(this)">Update</button>'
+        var cell9 = rowElement.insertCell(8);
+        cell9.innerHTML = '<button onclick=doDelete(this)>Delete</button>'
+    }
 
-            var cell1 = rowElement.insertCell(0);
-            cell1.innerHTML = candle.id
-            var cell2 = rowElement.insertCell(1);
-            cell2.innerHTML = candle.Name
-            var cell3 = rowElement.insertCell(2);
-            cell3.innerHTML = candle.Colour
-            var cell4 = rowElement.insertCell(3);
-            cell4.innerHTML = candle.Height
-            var cell5 = rowElement.insertCell(4);
-            cell5.innerHTML = candle.Width
-            var cell6 = rowElement.insertCell(5);
-            cell6.innerHTML = candle.Scent
-            var cell7 = rowElement.insertCell(6);
-            cell7.innerHTML = candle.Price
-            var cell8 = rowElement.insertCell(7);
-            cell8.innerHTML = '<button onclick="showUpdate(this)">Update</button>'
-            var cell9 = rowElement.insertCell(8);
-            cell9.innerHTML = '<button onclick=doDelete(this)>Delete</button>'
-            }
+    // Function to clear the inputted data from the form when creating a new candle 
+    function clearForm(){
+        var form = document.getElementById('createUpdateForm')
 
-            
-        // Read in the cadnle data from the current row 
-        function getCandleFromRow(rowElement){
-            var candle ={}
-            candle.id = rowElement.cells[0].firstChild.textContent
-            candle.Name = rowElement.cells[1].firstChild.textContent
-            candle.Colour= rowElement.cells[2].firstChild.textContent
-            candle.Height = rowElement.cells[3].firstChild.textContent
-            candle.Width = rowElement.cells[4].firstChild.textContent
-            candle.Scent = rowElement.cells[5].firstChild.textContent
-            candle.Price = rowElement.cells[6].firstChild.textContent
-            return candle 
-            }
+        form.querySelector('input[name="Name"]').value=''
+        form.querySelector('input[name="Colour"]').value=''
+        form.querySelector('input[name="Height"]').value=''
+        form.querySelector('input[name="Width"]').value=''
+        form.querySelector('input[name="Scent"]').value=''
+        form.querySelector('input[name="Price"]').value=''
+    }
 
+    // Takes in a row element and returns a candle object 
+    function getCandleFromRow(rowElement){
+        var candle ={}
+        candle.id  = rowElement.getAttribute('id')
+        candle.Name = rowElement.cells[1].firstChild.textContent
+        candle.Colour = rowElement.cells[2].firstChild.textContent
+        candle.Height = rowElement.cells[3].firstChild.textContent
+        candle.Width = rowElement.cells[4].firstChild.textContent
+        candle.Scent = rowElement.cells[5].firstChild.textContent
+        candle.Price = parseInt(rowElement.cells[6].firstChild.textContent,10)
+        return candle
+    }
 
-        function setCandleInRow(rowElement, candle){
-            rowElement.cells[0].firstChild.textContent= candle.id
-            rowElement.cells[1].firstChild.textContent= candle.Name
-            rowElement.cells[2].firstChild.textContent= candle.Colour
-            rowElement.cells[3].firstChild.textContent= candle.Height
-            rowElement.cells[4].firstChild.textContent= candle.Width
-            rowElement.cells[5].firstChild.textContent= candle.Scent
-            rowElement.cells[6].firstChild.textContent= candle.Price
+    // Populate the row with the details of the candle 
+    function setCandleInRow(rowElement, candle){
+        rowElement.cells[0].firstChild.textContent= candle.id  
+        rowElement.cells[1].firstChild.textContent= candle.Name 
+        rowElement.cells[2].firstChild.textContent= candle.Colour
+        rowElement.cells[3].firstChild.textContent= candle.Height
+        rowElement.cells[4].firstChild.textContent= candle.Width
+        rowElement.cells[5].firstChild.textContent= candle.Scent
+        rowElement.cells[6].firstChild.textContent= candle.Price
+    }
 
-            }
+    // Populate the form with the details of the candle being updated 
+    function populateFormWithCandle(candle){
+        var form = document.getElementById('createUpdateForm')
+        form.querySelector('input[name="id"]').disabled = true
 
-        function doCreate(){
-            //Testing this works by printing to console 
-            //console.log(candle)
-            candle = getCandleFromForm()
-            //Testing it works 
-            console.log("Creating a candle")
-            addCandleToTable(candle)
-            showViewAll()
-            clearForm()
-            
-        }
+        form.querySelector('input[name="id"]').value  = candle.id
+        form.querySelector('input[name="Name"]').value= candle.Name
+        form.querySelector('input[name="Colour"]').value= candle.Colour
+        form.querySelector('input[name="Height"]').value= candle.Height
+        form.querySelector('input[name="Width"]').value= candle.Width
+        form.querySelector('input[name="Scent"]').value= candle.Scent
+        form.querySelector('input[name="Price"]').value= candle.Price
+        return candle
+    }
 
-
-        function doUpdate(){
-            candle = getCandleFromForm();
-            var rowElement = document.getElementById(candle.id)
-            setCandleInRow(rowElement,candle)
-
-            showViewAll()
-            clearForm()
-            
-        }
-
-        // Delete candle from table
-        function doDelete(buttonElement){
-            var tableElement = document.getElementById('candleTable')
-            var index = buttonElement.parentNode.parentNode.rowIndex;
-            tableElement.deleteRow(index);
-            }
-
-
-            
-
-    
+    //Read the value of the candle from the form
+    function getCandleFromForm(){
+        var form = document.getElementById('createUpdateForm')
+        var candle = {}
+        candle.id = form.querySelector('input[name="id"]').value
+        candle.Name = form.querySelector('input[name="Name"]').value
+        candle.Colour = form.querySelector('input[name="Colour"]').value
+        candle.Height = form.querySelector('input[name="Height"]').value
+        candle.Width= form.querySelector('input[name="Width"]').value
+        candle.Scent = form.querySelector('input[name="Scent"]').value
+        candle.Price = parseInt(form.querySelector('input[name="Price"]').value,10)
+        console.log(JSON.stringify(candle))
+        return candle
+    }
+   
     </script>
 </html>
