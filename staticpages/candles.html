@@ -38,7 +38,6 @@
 
         .center {
             text-align: center;
-            border: 3px solid cornflowerblue;
         } 
         
 
@@ -48,7 +47,7 @@
         }
         
 
-        .centerButtonCreateANewCandle {
+        .ButtonCreateANewCandle {
                 margin: 0;
                 position: absolute;
                 left: 45%;
@@ -64,52 +63,81 @@
 
         }
 
-        .centerButtonCreateANewCandle:hover 
-        {background-color: lightgreen}
+        .ButtonCreateANewCandle:hover {
+            background-color: lightgreen
+        }
 
-        .centerButtonCreateANewCandle:active {
+        .ButtonCreateANewCandle:active {
             background-color: darkgreen;
             box-shadow: 0 5px #666;
             transform: translateY(4px);
         }
 
 
-        .centerButtonCreate {
+        .ButtonCreate {
             margin: 0;
             position: absolute;
             left: 50%;
             border-radius: 12px;
         }
 
-        .centerButtonCreate:hover {
+        .ButtonCreate:hover {
             background-color: lightgreen
         }
 
-        .centerButtonCreate:active {
+        .ButtonCreate:active {
             background-color: darkgreen;
             box-shadow: 0 5px darkgrey;
             transform: translateY(4px);
         }
 
 
-        .centerButtonUpdate {
+        .ButtonUpdate {
             margin: 0;
             position: absolute;
             left: 49%;
             border-radius: 12px;
         }
 
-        .centerButtonUpdate:hover {
+        .ButtonUpdate:hover {
             background-color: lightgreen
         }
 
-        .centerButtonUpdate:active {
+        .ButtonUpdate:active {
             background-color: darkgreen;
             box-shadow: 0 5px darkgrey;
             transform: translateY(4px);
         }
 
 
+
+
+        .ButtonVisitFrames {
+                margin: 0;
+                position: absolute;
+                left: 42%;
+                color: black;
+                padding: 4px 8px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+                border-radius: 12px;
+
+        }
+
+        .ButtonVisitFrames:hover 
+        {background-color: lightgreen}
+
+        .ButtonVisitFrames:active {
+            background-color: darkgreen;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+
+        
         img {
             display: block;
             margin-left: auto;
@@ -127,7 +155,8 @@
         
         
 
-        <div class="centerButtonCreateANewCandle"> <button id="showCreateButton" onclick="showCreate()">Create A New Candle</button></div>
+        <div class="ButtonCreateANewCandle"> <button id="showCreateButton" onclick="showCreate()">Create a new Candle</button></div>
+
         <br></br>     
         <div>
             <table class="center" id="candleTable">
@@ -144,6 +173,7 @@
                 </tr>
                 
             </table>
+            
         </div>
         <div class="center" id='createUpdateForm' style="display: none">
                 <h2><i><span id="createLabel">Create</span> <span id="updateLabel">Update</span> a Candle</i></h2>
@@ -155,9 +185,16 @@
                 Scent <input type="text" name="Scent"/> <br/>
                 Price <input type="number" name="Price"/> <br/>
                 </br>
-                <span><button id="doCreateButton" class = "centerButtonCreate" onclick="doCreate()">Create!</button></span>
-                <span><button id="doUpdateButton" class = "centerButtonUpdate"onclick="doUpdate()">Update!</button></span>
+                <span><button id="doCreateButton" class = "ButtonCreate" onclick="doCreate()">Create!</button></span>
+                <span><button id="doUpdateButton" class = "ButtonUpdate"onclick="doUpdate()">Update!</button></span>
         </div>
+        <br>
+
+        <div class="ButtonVisitFrames"><a href="http://127.0.0.1:5000/frames.html">
+            <button>Click here to visit Frames Webpage</button>
+        </a</div>
+               
+        
     </body>
     <script>
     // Showing and hiding buttons/tables and forms

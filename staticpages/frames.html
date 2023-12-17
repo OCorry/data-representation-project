@@ -47,7 +47,7 @@
         }
         
 
-        .centerButtonCreateANewFrame {
+        .ButtonCreateANewFrame {
             margin: 0;
             position: absolute;
             left: 45.5%;
@@ -63,18 +63,18 @@
 
         }
 
-        .centerButtonCreateANewFrame:hover {
+        .ButtonCreateANewFrame:hover {
             background-color: lightgreen
         }
 
-        .centerButtonCreateANewFrame:active {
+        .ButtonCreateANewFrame:active {
             background-color: darkgreen;
             box-shadow: 0 5px darkgrey;
             transform: translateY(4px);
         }
 
 
-        .centerButtonCreate {
+        .ButtonCreate {
             margin: 0;
             position: absolute;
             left: 50%;
@@ -82,18 +82,18 @@
 
         }
 
-        .centerButtonCreate:hover {
+        .ButtonCreate:hover {
             background-color: lightgreen
         }
 
-        .centerButtonCreate:active {
+        .ButtonCreate:active {
             background-color: darkgreen;
             box-shadow: 0 5px darkgrey;
             transform: translateY(4px);
         }
 
 
-        .centerButtonUpdate {
+        .ButtonUpdate {
             margin: 0;
             position: absolute;
             left: 49%;
@@ -101,11 +101,38 @@
 
         }
 
-        .centerButtonUpdate:hover {
+        .ButtonUpdate:hover {
             background-color: lightgreen
         }
 
-        .centerButtonUpdate:active {
+        .ButtonUpdate:active {
+            background-color: darkgreen;
+            box-shadow: 0 5px darkgrey;
+            transform: translateY(4px);
+        }
+
+
+        .ButtonVisitCandles {
+            margin: 0;
+            position: absolute;
+            left: 42%;
+            color: black;
+            padding: 4px 8px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 12px;
+
+        }
+
+        .ButtonVisitCandles:hover {
+            background-color: lightgreen
+        }
+
+        .ButtonVisitCandles:active {
             background-color: darkgreen;
             box-shadow: 0 5px darkgrey;
             transform: translateY(4px);
@@ -123,7 +150,7 @@
     <body>
         <h1><u><i><b>Photo Frames</b></i></u></h1>
         <img src="/images/frame.jpeg" alt="candle image" width="440" height="345">
-        <div class="centerButtonCreateANewFrame"> <button id="showCreateButton" class="button" onclick="showCreate()">Create a new Frame</button></div>
+        <div class="ButtonCreateANewFrame"> <button id="showCreateButton" class="button" onclick="showCreate()">Create a new Frame</button></div>
         <div></br></br>
             <table class="center" id="frameTable">
                 <tr>
@@ -148,10 +175,15 @@
                 Width <input type="number" name="Width"/> <br/>
                 Price <input type="number" name="Price"/> <br/>
                 </br>
-                <span><button class = "centerButtonCreate" id="doCreateButton" onclick="doCreate()">Create!</button></span>
-                <span><button class ="centerButtonUpdate" id="doUpdateButton"  onclick="doUpdate()">Update!</button></span>
-            </div>   
+                <span><button class = "ButtonCreate" id="doCreateButton" onclick="doCreate()">Create!</button></span>
+                <span><button class ="ButtonUpdate" id="doUpdateButton"  onclick="doUpdate()">Update!</button></span>
+            </div>
+            <br>
+            <div class="ButtonVisitCandles"><a href="http://127.0.0.1:5000/candles.html">
+                <button>Click here to visit Candles Webpage</button>
+            </a</div>
     </body>
+
     <script>
     // Showing and hiding buttons/tables and forms
     function showCreate(){
