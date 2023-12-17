@@ -9,38 +9,68 @@
         <!--Linking to the candlesAjax.js file-->
         <script src="framesAjax.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <!--https://getbootstrap.com/-->
-    
+        
+    <!--Using Css to style the page-->
     <style>
         body {
             background-color: rgb(238, 142, 201);
         }
-        /*https://www.w3schools.com/css/css_background.asp*/
 
-        td, th {text-align:center; color:cornflowerblue;}
-        /* https://www.w3schools.com/css/css_align.asp */
 
-        table {border: 3px dashed cornflowerblue; background-color: lightgray;}
-        /*https://www.w3schools.com/css/css_table_align.asp */
+        td {
+            text-align:center; color:cornflowerblue;
+        }
+        th {
+            text-align:center; color:black;background-color: lightseagreen;
+        }
         
+
+        table {
+            border: 3px dashed cornflowerblue; background-color: lightgray; width:90%
+        }
+        
+
+        table.center {
+            margin-left: auto; 
+            margin-right: auto;
+        }
+       
         .center {
             text-align: center;
             border: 3px solid cornflowerblue;
         } 
-        /*https://www.w3schools.com/css/css_align.asp */   
-
+         
 
         h1, h2 {
             text-align: center;
             color: cornflowerblue;
         }
-        /* https://www.w3schools.com/css/css_text.asp */
+        
 
-        .centerButton {
+        .centerButtonCreateANewFrame {
             margin: 0;
             position: absolute;
-            left: 46%;
+            left: 45.5%;
+            color: black;
+            padding: 4px 8px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 12px;
 
+        }
+
+        .centerButtonCreateANewFrame:hover {
+            background-color: lightgreen
+        }
+
+        .centerButtonCreateANewFrame:active {
+            background-color: darkgreen;
+            box-shadow: 0 5px darkgrey;
+            transform: translateY(4px);
         }
 
 
@@ -48,42 +78,69 @@
             margin: 0;
             position: absolute;
             left: 50%;
+            border-radius: 12px;
 
         }
+
+        .centerButtonCreate:hover {
+            background-color: lightgreen
+        }
+
+        .centerButtonCreate:active {
+            background-color: darkgreen;
+            box-shadow: 0 5px darkgrey;
+            transform: translateY(4px);
+        }
+
 
         .centerButtonUpdate {
             margin: 0;
             position: absolute;
-            left: 50%;
+            left: 49%;
+            border-radius: 12px;
 
         }
-        
-        /* https://www.w3schools.com/howto/howto_css_center_button.asp */
 
+        .centerButtonUpdate:hover {
+            background-color: lightgreen
+        }
 
+        .centerButtonUpdate:active {
+            background-color: darkgreen;
+            box-shadow: 0 5px darkgrey;
+            transform: translateY(4px);
+        }
+    
+
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
     </style>
     
     </head>
     <body>
-        <h1>Frames</h1>
-        <div class="centerButton"> <button id="showCreateButton" onclick="showCreate()">Create A New Frame</button></div>
+        <h1><u><i><b>Photo Frames</b></i></u></h1>
+        <img src="/images/frame.jpeg" alt="candle image" width="440" height="345">
+        <div class="centerButtonCreateANewFrame"> <button id="showCreateButton" class="button" onclick="showCreate()">Create a new Frame</button></div>
         <div></br></br>
-            <table class="table" id="frameTable">
+            <table class="center" id="frameTable">
                 <tr>
-                        <th>id</th>
-                        <th>Occasion</th>
-                        <th>Colour</th>
-                        <th>Height</th>
-                        <th>Width</th>
-                        <th>Price</th>
-                        <th>Update</th>
-                        <th>Delete</th>
+                        <th><i>id</i></th>
+                        <th><i>Occasion</i></th>
+                        <th><i>Colour</i></th>
+                        <th><i>Height</i></th>
+                        <th><i>Width</i></th>
+                        <th><i>Price</i></th>
+                        <th><i>Update</i></th>
+                        <th><i>Delete</i></th>
                 </tr>
                 
             </table>
         </div>
         <div class="center" id='createUpdateForm' style="display: none">
-                <h2><span id="createLabel">Create a</span> <span id="updateLabel">Update</span> a Frame</h2>
+                <h2><i><span id="createLabel">Create a</span> <span id="updateLabel">Update</span> a Frame</i></h2>
                 <input type="hidden" name="id"/>
                 Occasion <input type="text" name="Occasion" /><br/>
                 Colour <input type="text" name="Colour"/> <br/>

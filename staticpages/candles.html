@@ -11,84 +11,142 @@
         <script src="candlesAjax.js"></script>
         
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <!--https://getbootstrap.com/-->
-<style>
-    body {
-        background-color: rgb(238, 142, 201);
-    }
-    /*https://www.w3schools.com/css/css_background.asp*/
+    <!--Using Css to style the page-->       
+    <style>
+        body {
+            background-color: rgb(238, 142, 201);
+        }
+        
+        td {
+            text-align:center; color:cornflowerblue;
+        }
+        th {
+            text-align:center; color:black;background-color: lightseagreen;
+        }
+        
 
-    td, th {text-align:center; color:cornflowerblue;}
-    /* https://www.w3schools.com/css/css_align.asp */
+        table {
+            border: 3px dashed cornflowerblue; background-color: lightgray; width:90%
+        }
+        
 
-    table {border: 3px dashed cornflowerblue; background-color: lightgray;}
-    /*https://www.w3schools.com/css/css_table_align.asp */
-    .center {
-        text-align: center;
-        border: 3px solid cornflowerblue;
-    } 
-    /*https://www.w3schools.com/css/css_align.asp */   
+        table.center {
+            margin-left: auto; 
+            margin-right: auto;
+        }
+        
+
+        .center {
+            text-align: center;
+            border: 3px solid cornflowerblue;
+        } 
+        
+
+        h1, h2 {
+            text-align: center;
+            color: cornflowerblue;
+        }
+        
+
+        .centerButtonCreateANewCandle {
+                margin: 0;
+                position: absolute;
+                left: 45%;
+                color: black;
+                padding: 4px 8px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+                border-radius: 12px;
+
+        }
+
+        .centerButtonCreateANewCandle:hover 
+        {background-color: lightgreen}
+
+        .centerButtonCreateANewCandle:active {
+            background-color: darkgreen;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
 
 
-    h1, h2 {
-        text-align: center;
-        color: cornflowerblue;
-    }
-    /* https://www.w3schools.com/css/css_text.asp */
-
-    .centerButton{
-        margin: 0;
-        position: absolute;
-        left: 46%;
-    }
-
-    .centerButtonCreate {
+        .centerButtonCreate {
             margin: 0;
             position: absolute;
             left: 50%;
+            border-radius: 12px;
+        }
 
-    }
+        .centerButtonCreate:hover {
+            background-color: lightgreen
+        }
 
-    .centerButtonUpdate {
-        margin: 0;
-        position: absolute;
-        left: 50%;
-
-    }
-
-    
-    
-    
-    /* https://www.w3schools.com/howto/howto_css_center_button.asp */
+        .centerButtonCreate:active {
+            background-color: darkgreen;
+            box-shadow: 0 5px darkgrey;
+            transform: translateY(4px);
+        }
 
 
-</style>
+        .centerButtonUpdate {
+            margin: 0;
+            position: absolute;
+            left: 49%;
+            border-radius: 12px;
+        }
+
+        .centerButtonUpdate:hover {
+            background-color: lightgreen
+        }
+
+        .centerButtonUpdate:active {
+            background-color: darkgreen;
+            box-shadow: 0 5px darkgrey;
+            transform: translateY(4px);
+        }
+
+
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+    </style>
     
     </head>
     <body>
 
         
-        <h1>Candles</h1>
-        <div class="centerButton"> <button id="showCreateButton" onclick="showCreate()">Create A New Candle</button></div>
-        </body><br></br>
+        <h1><u><i><b>Candles</b></i></u></h1>
+        <img src="/images/candle.png" alt="candle image" width="440" height="345">
+        
+        
+
+        <div class="centerButtonCreateANewCandle"> <button id="showCreateButton" onclick="showCreate()">Create A New Candle</button></div>
+        <br></br>     
         <div>
-            <table class="table" id="candleTable">
+            <table class="center" id="candleTable">
                 <tr>
-                        <th>id</th>
-                        <th>Name</th>
-                        <th>Colour</th>
-                        <th>Height</th>
-                        <th>Width</th>
-                        <th>Scent</th>
-                        <th>Price</th>
-                        <th>Update</th>
-                        <th>Delete</th>
+                        <th><i>id</i></th>
+                        <th><i>Name</i></th>
+                        <th><i>Colour</i></th>
+                        <th><i>Height</i></th>
+                        <th><i>Width</i></th>
+                        <th><i>Scent</i></th>
+                        <th><i>Price</i></th>
+                        <th><i>Update</i></th>
+                        <th><i>Delete</i></th>
                 </tr>
                 
             </table>
         </div>
-        <div  class="center" id='createUpdateForm' style="display: none">
-                <h2><span id="createLabel">Create</span> <span id="updateLabel">Update</span> a Candle</h2>
+        <div class="center" id='createUpdateForm' style="display: none">
+                <h2><i><span id="createLabel">Create</span> <span id="updateLabel">Update</span> a Candle</i></h2>
                 <input type="hidden" name="id"/>
                 Name <input type="text" name="Name" /><br/>
                 Colour <input type="text" name="Colour"/> <br/>
