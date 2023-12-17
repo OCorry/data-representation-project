@@ -77,7 +77,7 @@
         .ButtonCreate {
             margin: 0;
             position: absolute;
-            left: 50%;
+            left: 48%;
             border-radius: 12px;
         }
 
@@ -110,8 +110,6 @@
         }
 
 
-
-
         .ButtonVisitFrames {
                 margin: 0;
                 position: absolute;
@@ -132,6 +130,32 @@
         {background-color: lightgreen}
 
         .ButtonVisitFrames:active {
+            background-color: darkgreen;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+
+
+        .ButtonHomepage {
+                margin: 0;
+                position: absolute;
+                left: 43.5%;
+                color: black;
+                padding: 4px 8px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+                border-radius: 12px;
+
+        }
+
+        .ButtonHomepage:hover 
+        {background-color: lightgreen}
+
+        .ButtonHomepage:active {
             background-color: darkgreen;
             box-shadow: 0 5px #666;
             transform: translateY(4px);
@@ -189,10 +213,15 @@
                 <span><button id="doUpdateButton" class = "ButtonUpdate"onclick="doUpdate()">Update!</button></span>
         </div>
         <br>
-
+        <br>
         <div class="ButtonVisitFrames"><a href="http://127.0.0.1:5000/frames.html">
-            <button>Click here to visit Frames Webpage</button>
-        </a</div>
+            <button>Click here to visit Frames Webpage</button></a>
+        </div>
+        <br>
+        <br>
+        <div class="ButtonHomepage"><a href="http://127.0.0.1:5000/candles.html">
+            <button>Back to Candles homepage</button></a>
+        </div>
                
         
     </body>
