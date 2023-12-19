@@ -1,10 +1,12 @@
 # Creating all of the functions that will be used in the rest_server.py module 
 # Code adapted from Topic 10
 
-# importing the database longin details from config.py file 
-from config import config as cfg
 # To allow to communicate with the sql database
 import mysql.connector
+
+# importing the database longin details from config.py file 
+from config import config as cfg
+
 
 # Create the candlesDAO class 
 class candlesDAO:

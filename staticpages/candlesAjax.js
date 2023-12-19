@@ -3,7 +3,7 @@
     //https://www.w3schools.com/tags/att_script_src.asp
     function getAllAjax(){
         $.ajax({
-            "url": "http://127.0.0.1:5000/candles",
+            "url": "/candles",
             "method":"GET",
             "data":"",
             "dataType": "JSON",
@@ -25,7 +25,7 @@
         
         console.log(JSON.stringify(candle));
         $.ajax({
-            "url": "http://127.0.0.1:5000/candles",
+            "url": "/candles",
             "method":"POST",
             "data":JSON.stringify(candle),
             "dataType": "JSON",
@@ -43,16 +43,18 @@
             }
         });
     }
+
     function updateCandleAjax(candle){
         
         console.log(JSON.stringify(candle));
         $.ajax({
-            "url": "http://127.0.0.1:5000/candles/"+encodeURI(candle.id),
+            "url": "/candles/"+encodeURI(candle.id),
             "method":"PUT",
             "data":JSON.stringify(candle),
             "dataType": "JSON",
             contentType: "application/json; charset=utf-8",
             "success":function(result){
+               console.log("Candle updated")
                console.log(result);
                   
             },
@@ -66,7 +68,7 @@
         
         console.log(JSON.stringify('deleting '+id));
         $.ajax({
-            "url": "http://127.0.0.1:5000/candles/"+encodeURI(id),
+            "url": "/candles/"+encodeURI(id),
             "method":"DELETE",
             "data":"",
             "dataType": "JSON",

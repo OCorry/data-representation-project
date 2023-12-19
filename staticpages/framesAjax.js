@@ -6,7 +6,7 @@
 
     function getAllAjax(){
         $.ajax({
-            "url": "http://127.0.0.1:5000/frames",
+            "url": "/frames",
             "method":"GET",
             "data":"",
             "dataType": "JSON",
@@ -28,7 +28,7 @@
         
         console.log(JSON.stringify(frame));
         $.ajax({
-            "url": "http://127.0.0.1:5000/frames",
+            "url": "/frames",
             "method":"POST",
             "data":JSON.stringify(frame),
             "dataType": "JSON",
@@ -50,12 +50,13 @@
         
         console.log(JSON.stringify(frame));
         $.ajax({
-            "url": "http://127.0.0.1:5000/frames/"+encodeURI(frame.id),
+            "url": "/frames/"+encodeURI(frame.id),
             "method":"PUT",
             "data":JSON.stringify(frame),
             "dataType": "JSON",
             contentType: "application/json; charset=utf-8",
             "success":function(result){
+               console.log("Frame Updated")
                console.log(result);
                   
             },
@@ -69,7 +70,7 @@
         
         console.log(JSON.stringify('deleting '+id));
         $.ajax({
-            "url": "http://127.0.0.1:5000/frames/"+encodeURI(id),
+            "url": "/frames/"+encodeURI(id),
             "method":"DELETE",
             "data":"",
             "dataType": "JSON",

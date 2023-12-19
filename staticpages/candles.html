@@ -171,13 +171,13 @@
     </style>
     
     </head>
-    <body>
+    <body>    
 
         
         <h1><u><i><b>Candles</b></i></u></h1>
         <img src="/images/candle.png" alt="candle image" width="440" height="345">
         
-        
+
 
         <div class="ButtonCreateANewCandle"> <button id="showCreateButton" onclick="showCreate()">Create a new Candle</button></div>
 
@@ -207,19 +207,19 @@
                 Height <input type="number" name="Height"/> <br/>
                 Width <input type="number" name="Width"/> <br/>
                 Scent <input type="text" name="Scent"/> <br/>
-                Price <input type="number" name="Price"/> <br/>
-                </br>
+                Price <input type="number" name="Price"/> <br/></br>
+                
                 <span><button id="doCreateButton" class = "ButtonCreate" onclick="doCreate()">Create!</button></span>
-                <span><button id="doUpdateButton" class = "ButtonUpdate"onclick="doUpdate()">Update!</button></span>
+                <span><button id="doUpdateButton" class = "ButtonUpdate" onclick="doUpdate()">Update!</button></span>
         </div>
         <br>
         <br>
-        <div class="ButtonVisitFrames"><a href="http://127.0.0.1:5000/frames.html">
-            <button>Click here to visit Frames Webpage</button></a>
+        <div class="ButtonVisitFrames"><a href="/frames.html">
+            <button>Click here to visit Frames page</button></a>
         </div>
         <br>
         <br>
-        <div class="ButtonHomepage"><a href="http://127.0.0.1:5000/candles.html">
+        <div class="ButtonHomepage"><a href="/candles.html">
             <button>Back to Candles homepage</button></a>
         </div>
                
@@ -260,16 +260,19 @@
 
 
         var rowElement = buttonElement.parentNode.parentNode
+
     
-        
         var candle = getCandleFromRow(rowElement)
         populateFormWithCandle(candle)
     }
 
+
     // Function to create a new candle 
     function doCreate(){
         var form = document.getElementById('createUpdateForm')
+
         var candle = {}
+
         candle.Name = form.querySelector('input[name="Name"]').value
         candle.Colour = form.querySelector('input[name="Colour"]').value
         candle.Height = form.querySelector('input[name="Height"]').value
@@ -344,8 +347,8 @@
         candle.id  = rowElement.getAttribute('id')
         candle.Name = rowElement.cells[1].firstChild.textContent
         candle.Colour = rowElement.cells[2].firstChild.textContent
-        candle.Height = rowElement.cells[3].firstChild.textContent
-        candle.Width = rowElement.cells[4].firstChild.textContent
+        candle.Height = parseInt(rowElement.cells[3].firstChild.textContent,10)
+        candle.Width = parseInt(rowElement.cells[4].firstChild.textContent,10)
         candle.Scent = rowElement.cells[5].firstChild.textContent
         candle.Price = parseInt(rowElement.cells[6].firstChild.textContent,10)
         return candle
@@ -384,8 +387,8 @@
         candle.id = form.querySelector('input[name="id"]').value
         candle.Name = form.querySelector('input[name="Name"]').value
         candle.Colour = form.querySelector('input[name="Colour"]').value
-        candle.Height = form.querySelector('input[name="Height"]').value
-        candle.Width= form.querySelector('input[name="Width"]').value
+        candle.Height = parseInt(form.querySelector('input[name="Height"]').value,10)
+        candle.Width= parseInt(form.querySelector('input[name="Width"]').value,10)
         candle.Scent = form.querySelector('input[name="Scent"]').value
         candle.Price = parseInt(form.querySelector('input[name="Price"]').value,10)
         console.log(JSON.stringify(candle))
