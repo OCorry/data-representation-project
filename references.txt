@@ -1,4 +1,4 @@
-Boot Strap:
+Bootstrap:
 https://getbootstrap.com/
 
 CSS:
@@ -32,3 +32,6 @@ https://www.w3schools.com/html/html_filepaths.asp
 
 HTML links:
 https://www.w3schools.com/html/html_links.asp
+
+Importing Javascript files to the HTML files 
+https://www.w3schools.com/tags/att_script_src.asp

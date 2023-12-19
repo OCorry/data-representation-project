@@ -1,9 +1,7 @@
 // Ajax Functions
 // These are imported to the frames.html page using <script src="framesAjax.js"></script>
-    //https://www.w3schools.com/tags/att_script_src.asp
 
-
-
+    // Get All Frames
     function getAllAjax(){
         $.ajax({
             "url": "/frames",
@@ -15,8 +13,7 @@
                 console.log(result);
                 for (frame of result){
                     addFrameToTable(frame);
-                }
-                
+                }            
             },
             "error":function(xhr,status,error){
                 console.log("error: "+status+" msg:"+error);
@@ -24,8 +21,9 @@
         });
 
     }
-    function createFrameAjax(frame){
-        
+
+    // Create New Frame
+    function createFrameAjax(frame){      
         console.log(JSON.stringify(frame));
         $.ajax({
             "url": "/frames",
@@ -46,8 +44,9 @@
             }
         });
     }
-    function updateFrameAjax(frame){
-        
+
+    //Update an Exisitng Frame
+    function updateFrameAjax(frame){    
         console.log(JSON.stringify(frame));
         $.ajax({
             "url": "/frames/"+encodeURI(frame.id),
@@ -66,6 +65,8 @@
         });
     }
 
+
+    //Delete a Frame
     function deleteFrameAjax(id){
         
         console.log(JSON.stringify('deleting '+id));
@@ -84,4 +85,6 @@
             }
         });
     }
+
+    //Calling the getAll Ajax function so that the contents of the database are show on opening of the webpage
     getAllAjax();

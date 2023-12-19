@@ -1,7 +1,7 @@
 # Create a flask application server to implement RESTful API
 # Carry out CRUD (Create, Read, Update & Delete) operations on the API
 # Two APIS created - Candles & Frames
-# Code Adapted from Topic 8 lectures and labs 
+# Code Adapted from Topic 8 lectures and labs & Topic 10
 
 
 # Import the DAOs from the DAO files
@@ -15,9 +15,12 @@ app = Flask(__name__, static_url_path='', static_folder='staticpages')
 
 #Implement the requests:
 
+                ################################################################
+                                        #Candles#
+                ################################################################   
+
 # Get ALL request
 # curl http://127.0.0.1:5000/candles
-# using the /candles URL 
 @app.route('/candles')
 def getall():
     #print("in getall")
@@ -33,9 +36,7 @@ def findById(id):
     return jsonify(findCandle)
 
     
-
-# create a new candle
-# can only use curl to check this as browser only does get and post
+# Create a new candle
 # curl -i -H "Content-Type:application/json" -X POST -d "{\"Name\":\"Orchard\", \"Colour\":\"Light Green\", \"Height\":16, \"Width\":10, \"Scent\":\"Apple\", \"Price\":13}" http://127.0.0.1:5000/candles
 @app.route('/candles', methods=['POST'])
 #Create the candle 
@@ -59,7 +60,7 @@ def create():
     
 
 
-# update an existing candle
+# Update an existing candle
 # curl -i -H "Content-Type:application/json" -X PUT -d "{\"Name\":\"orange\",\"Colour\":\"Orange\"}" http://127.0.0.1:5000/candles/5
 @app.route('/candles/<int:id>', methods=['PUT'])
 def update(id):
@@ -116,7 +117,6 @@ def delete(id):
 
 # Get ALL request
 # curl http://127.0.0.1:5000/frames
-# using the /frames URL 
 @app.route('/frames')
 def getallFrames():
     #print("in getall")
@@ -133,8 +133,7 @@ def findFrameById(id):
 
     
 
-# create a new frame
-# can only use curl to check this as browser only does get and post
+# Create a new frame
 # curl -i -H "Content-Type:application/json" -X POST -d "{\"Occasion\":\"Baby Girl\", \"Colour\":\"Pink\", \"Height\":16, \"Width\":10, \"Scent\":\"Apple\", \"Price\":13}" http://127.0.0.1:5000/frames
 @app.route('/frames', methods=['POST'])
 #Create the frame 
@@ -157,7 +156,7 @@ def createNewFrame():
     
 
 
-# update an existing frame
+# Update an existing frame
 # curl -i -H "Content-Type:application/json" -X PUT -d "{\"Occasion\":\"Easter\",\"Colour\":\"Yellow\"}" http://127.0.0.1:5000/frames/5
 @app.route('/frames/<int:id>', methods=['PUT'])
 def updateFrame(id):

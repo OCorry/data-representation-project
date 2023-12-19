@@ -1,10 +1,12 @@
 # Creating all of the functions that will be used in the rest_server.py module 
-# Code adapted from Topic 10
+# Creating the candlesDAO class which contains the functions to carry out SQL commands 
+# Code adapted from Topic 9 Lectures and Labs & Topic 10
+
 
 # To allow to communicate with the sql database
 import mysql.connector
 
-# importing the database longin details from config.py file 
+# Importing the database longin details from config.py file 
 from config import config as cfg
 
 
@@ -45,6 +47,7 @@ class candlesDAO:
 
 
     # Functions using SQL commands:
+        
     # Function to create a new candle 
     def create(self, values):
         cursor = self.getCursor()
@@ -57,7 +60,7 @@ class candlesDAO:
         return newid
     
 
-    # Function to retrive all from the database table using 
+    # Function to retrive all from the database table  
     def getAll(self):
         cursor = self.getCursor()
         sql="select * from candles"

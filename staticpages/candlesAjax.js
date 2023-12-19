@@ -1,6 +1,8 @@
 // Ajax Functions
-// These are imported to the candles.html page using <script src="candlesAjax.js"></script>
-    //https://www.w3schools.com/tags/att_script_src.asp
+// These are imported to the candles.html page using: <script src="candlesAjax.js"></script>
+// Code sourced from Topic 6 Lectures and labs and Topic 10//
+  
+    // Get All Candles
     function getAllAjax(){
         $.ajax({
             "url": "/candles",
@@ -13,7 +15,6 @@
                 for (candle of result){
                     addCandleToTable(candle);
                 }
-                
             },
             "error":function(xhr,status,error){
                 console.log("error: "+status+" msg:"+error);
@@ -21,8 +22,9 @@
         });
 
     }
+
+    // Create New Candle
     function createCandleAjax(candle){
-        
         console.log(JSON.stringify(candle));
         $.ajax({
             "url": "/candles",
@@ -44,8 +46,8 @@
         });
     }
 
+    //Update An Existing Candle
     function updateCandleAjax(candle){
-        
         console.log(JSON.stringify(candle));
         $.ajax({
             "url": "/candles/"+encodeURI(candle.id),
@@ -55,8 +57,7 @@
             contentType: "application/json; charset=utf-8",
             "success":function(result){
                console.log("Candle updated")
-               console.log(result);
-                  
+               console.log(result);                  
             },
             "error":function(xhr,status,error){
                 console.log("error: "+status+" msg:"+error);
@@ -64,6 +65,7 @@
         });
     }
 
+    //Delete A Candle
     function deleteCandleAjax(id){
         
         console.log(JSON.stringify('deleting '+id));
@@ -82,4 +84,5 @@
             }
         });
     }
+    //Calling the getAll Ajax function so that the contents of the database are show on opening of the webpage
     getAllAjax();

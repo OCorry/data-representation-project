@@ -1,10 +1,14 @@
 # Creating all of the functions that will be used in the rest_server.py module 
-# Code sourced from Topic 10
+# Creating the framesDAO class which contains the functions to carry out SQL commands 
+# Code adapted from Topic 9 Lectures and Labs & Topic 10
 
-#importing the database login details from config file 
-from config import config2 as cfg2
+
 # To allow to communicate with the sql database
 import mysql.connector
+
+#importing the database login details from config file 
+from config import config as cfg
+
 
 # Create the framesDAO class 
 class framesDAO:
@@ -18,10 +22,10 @@ class framesDAO:
 
     # login details are stored in the config.py file
     def __init__(self): 
-        self.host=cfg2["hostname"]
-        self.user=cfg2["username"]
-        self.password=cfg2["password"]
-        self.database=cfg2["databasename"]
+        self.host=cfg["hostname"]
+        self.user=cfg["username"]
+        self.password=cfg["password"]
+        self.database=cfg["databasename"]
 
         
     # Connects to the database
@@ -42,6 +46,7 @@ class framesDAO:
 
 
     # Functions using SQL commands:
+        
     # Function to create a new frame
     def createNewFrame(self, values):
         cursor = self.getCursor()
