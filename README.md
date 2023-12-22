@@ -72,41 +72,43 @@ For this project, I have sourced the majority of my code from my Lecturer Andrew
     * https://getbootstrap.com/
 
 * CSS:
-    * https://www.w3schools.com/css/css_background.asp
-    * https://www.w3schools.com/css/css_align.asp 
-    * https://www.w3schools.com/css/css_table_align.asp
-    * https://www.w3schools.com/howto/howto_css_table_center.asp
-    * https://www.w3schools.com/css/css_align.asp
-    * https://www.w3schools.com/howto/howto_css_table_center.asp
-    * https://www.w3schools.com/css/css_align.asp  
-    * https://www.w3schools.com/css/css_text.asp 
-    * https://www.w3schools.com/howto/howto_css_center_button.asp 
-    * https://www.w3schools.com/css/css3_buttons.asp 
+    * W3schools CSS Backgrounds. https://www.w3schools.com/css/css_background.asp
+    * W3schools CSS Layout - Horizontal & Vertical Align. https://www.w3schools.com/css/css_align.asp 
+    * W3schools. CSS Table Alignment. https://www.w3schools.com/css/css_table_align.asp
+    * W3schools. How TO - Center Tables. https://www.w3schools.com/howto/howto_css_table_center.asp
+    * W3schools. CSS Text. https://www.w3schools.com/css/css_text.asp 
+    * W3schools. How TO - Center a Button in DIV. https://www.w3schools.com/howto/howto_css_center_button.asp 
+    * W3schools. CSS Buttons .https://www.w3schools.com/css/css3_buttons.asp 
 
 
 * Italics: 
-    * https://www.w3schools.com/html/html_formatting.asp 
+    * W3schools. HTML Text Formatting. https://www.w3schools.com/html/html_formatting.asp 
 
 
 * Underline: 
-    * https://www.w3schools.com/tags/tag_u.asp 
+    * W3schools. HTML <u> Tag. https://www.w3schools.com/tags/tag_u.asp 
 
 
 * Images:
-   * https://www.w3schools.com/howto/howto_css_image_center.asp 
+   * w3schools. How TO - Center Images. https://www.w3schools.com/howto/howto_css_image_center.asp 
    * https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxOaoJ2jzpNqJKPO2FM7BGtlbc8g92ymkvuA&usqp=CAU
    * https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEhJkwfjyVBV75w2IDv_gKwMzlbZmZ9dVD7w&usqp=CAU
 
 * File Paths:
-    * https://www.w3schools.com/html/html_filepaths.asp
+    * w3schools. HTML File Paths. https://www.w3schools.com/html/html_filepaths.asp
 
 * HTML links:
-    * https://www.w3schools.com/html/html_links.asp
+    * w3schools HTML Links. https://www.w3schools.com/html/html_links.asp
 
 * Importing Javascript files to the HTML files 
-    * https://www.w3schools.com/tags/att_script_src.asp
+    * w3schools. ``HTML <script> src Attribute`` https://www.w3schools.com/tags/att_script_src.asp
 
 * MySql Connector error
-    * https://www.askpython.com/python/examples/fix-caching_sha2_password-is-not-supported
-    * https://stackoverflow.com/questions/50557234/authentication-plugin-caching-sha2-password-is-not-supported
+    * Kaur. Gurpreet. Ask Python. Fix Error “Authentication plugin ‘caching_sha2_password’ is not supported”(27/11/2023) </br> 
+    https://www.askpython.com/python/examples/fix-caching_sha2_password-is-not-supported
+    
+
+    * Jaju. Anupriya stackoverflow. Authentication plugin 'caching_sha2_password' is not supported (30/01/2019) 
+    </br>
+    https://stackoverflow.com/questions/50557234/authentication-plugin-caching-sha2-password-is-not-supported
 
