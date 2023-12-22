@@ -7,7 +7,7 @@ This repository contains my project submission for *Data Representation* module 
 
 The objective of this project is to write a program using ``Python`` which consumes RESTful Application Programming Interfaces [(or RESTful APIs)](https://www.ibm.com/topics/rest-apis) using Create, Read, Update and Delete (CRUD) operations.
 
-I have carried this out on my local machine and I have also hosted my work to *PythonAnywhere*. The links to my two html pages hosted on *PythonAnywhere* are <mark>[candles.html](https://orlacorry1.pythonanywhere.com/candles.html)</mark> and <mark>[frames.html](https://orlacorry1.pythonanywhere.com/frames.html)</mark>. 
+I have carried this out on my local machine and I have also hosted my work to *PythonAnywhere*. The links to my two html pages hosted on *PythonAnywhere* are <mark>[https://orlacorry1.pythonanywhere.com/candles.html](https://orlacorry1.pythonanywhere.com/candles.html)</mark> and <mark>[https://orlacorry1.pythonanywhere.com/frames.html](https://orlacorry1.pythonanywhere.com/frames.html)</mark>. 
 </br>
 
 ## Contents of the Repository
